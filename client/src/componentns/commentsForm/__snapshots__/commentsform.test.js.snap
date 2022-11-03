@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentsForm renders should CommentsForm match snapshot 1`] = `
+<DocumentFragment>
+  <form
+    action="#"
+  >
+    <input
+      class="form"
+      name="comment"
+      placeholder="Add comment"
+      type="text"
+      value=""
+    />
+    <button
+      class="form_button"
+      disabled=""
+      type="submit"
+    >
+      Post
+    </button>
+  </form>
+</DocumentFragment>
+`;
