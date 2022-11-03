@@ -60,7 +60,7 @@ count =0
             dispatch(incrementLikesAC({ index: postsIndex, userIndex: users.findIndex(el => el.id === userId), counter: productsArr }))
 
           }} />
-            {postssArr[users.findIndex(el => el.id === userId)].posts[postsIndex].comments.map((el, index) => el.isVisible ? <div  key={index} className={styles.comments_container}><h3 className={styles.comment_user_name}>{users[users.findIndex(el => el.id === userId)].name}</h3><h3 className={styles.comment_user_text}>{el.text}</h3></div> : null)}
+            {postssArr[users.findIndex(el => el.id === userId)].posts[postsIndex].comments.map((el, index) => el.isVisible ? <div  key={index} className={styles.comments_container}><h3 className={styles.comment_user_name}>{users[el.userIndex].name}</h3><h3 className={styles.comment_user_text}>{el.text}</h3></div> : null)}
             {postssArr[users.findIndex(el => el.id === userId)].posts[postsIndex].comments.length > 1 ? <button className={styles.showmore_btn} onClick={() => {
               dispatch(setCommentsAC())
               dispatch(showCommentsAC({ userIndex: users.findIndex(el => el.id === userId), index: postsIndex, comments: comments }))
