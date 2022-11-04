@@ -3,6 +3,7 @@ import { incrementLikes, decrementLikes, setCounter } from "./actions";
 const initialValue = {
   counter: [],
   isLoading: true
+
 }
 
 const likesReducer = (state = initialValue, action) => {

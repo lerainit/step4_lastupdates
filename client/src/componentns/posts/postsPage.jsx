@@ -10,6 +10,7 @@ import { setCommentsAC } from "../../store/comments/actionCreators";
 import { setProducts } from "../../store/products/actions";
 import { postsSlice } from "../../store/posts/actions";
 import { NavLink } from "react-router-dom";
+import { setPostsAC } from "../../store/posts/actionCreators";
 
 
 const PostsPage = () => {
@@ -20,6 +21,7 @@ const PostsPage = () => {
   const comments = useSelector(store => store.comments.value)
   const postssArr = useSelector(store => store.products.value)
   const posts = useSelector(store => store.posts.value)
+ 
   let count = 0
 
   useEffect(() => {
@@ -33,6 +35,7 @@ count =0
       }
    count++
       console.log(count)
+      dispatch(setPostsAC())
       dispatch({ type: postsSlice, payload: { posts: posts, count: count } })
 
       console.log('scroll')
