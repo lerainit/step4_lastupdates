@@ -1,7 +1,7 @@
-import { setProducts } from './actions'
+import { setCards } from './actions'
 
 
-export const setProductsAC = () => async (dispatch) => {
+export const setCardsAC = () => async (dispatch) => {
 
     if (!localStorage.getItem('products')) {
         try {
@@ -12,7 +12,7 @@ export const setProductsAC = () => async (dispatch) => {
                 console.log(data)
                 localStorage.setItem(`products`, JSON.stringify(data))
 
-                dispatch({ type: setProducts, })
+                dispatch({ type: setCards, })
 
             }
 
@@ -22,7 +22,7 @@ export const setProductsAC = () => async (dispatch) => {
         }
     }
     else {
-        dispatch({ type: setProducts, payload: [] })
+        dispatch({ type: setCards, payload: [] })
     }
 
 } 

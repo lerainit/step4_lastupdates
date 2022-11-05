@@ -3,7 +3,7 @@ import { Field, Formik, Form, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from 'yup'
 import { addCommentsAC, setCommentsAC } from "../../store/comments/actionCreators";
-import { setProducts } from "../../store/products/actions";
+import { setCards } from "../../store/cards/actions";
 import styles from './commentsForm.module.scss'
 import { setComments } from "../../store/comments/actions";
 
@@ -13,7 +13,6 @@ const CommentsForm = (props) => {
   const dispatch = useDispatch()
 
   const comments = useSelector(store => store.comments.value)
-  const products = useSelector(store => store.products.value)
   const users = useSelector(store => store.users.value)
   const authIndex = users.findIndex(({ isAuth }) => isAuth === true)
 
@@ -53,7 +52,7 @@ const CommentsForm = (props) => {
         dispatch(addCommentsAC({ comment: { userIndex: authIndex, text: values.comment, isVisible: false }, userIndex: props.userIndex, index: props.index, comments: comments }))
         dispatch({ type: setComments, payload: comments })
 
-        dispatch({ type: setProducts })
+        dispatch({ type: setCards })
 
       }}
 

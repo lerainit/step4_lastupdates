@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import { renderBackgroundAC } from '../../store/cardBackground/actionCreators';
 import { hideBackgroundAC } from '../../store/cardBackground/actionCreators';
 import Background from './background';
-import { setProductsAC } from '../../store/products/actionCreator';
+import { setCardsAC } from '../../store/cards/actionCreator';
 import { setUserIndexAC } from '../../store/userIndex/actionCreators'
 import { setCommentsAC } from '../../store/comments/actionCreators';
 
@@ -24,12 +24,12 @@ const Card = ({ userPosts, userIndex, id, index, background, url }) => {
       <div data-id={id} onMouseEnter={() => {
         dispatch(renderBackgroundAC({ index: index, userIndex: userIndex, background: background }))
 
-        dispatch(setProductsAC())
+        dispatch(setCardsAC())
       }} onMouseLeave={() => {
 
         dispatch(hideBackgroundAC({ index: index, userIndex: userIndex, background: background }))
 
-        dispatch(setProductsAC())
+        dispatch(setCardsAC())
       }}
         className={styles.img_container}>
 

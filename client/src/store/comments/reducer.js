@@ -62,7 +62,3 @@ const commentsReducer = (state = initialValue, action) => {
 export default commentsReducer;
 
 
-//let postArr = JSON.parse(localStorage.getItem('counter'))
-       //postArr.map((el,index) => el.posts[index].comments = el.posts[index].comments[0])
-     //  console.log(postArr)
-    //   localStorage.setItem('counter',JSON.stringify(postArr))

@@ -5,7 +5,7 @@ import Modal from './componentns/modal/modal'
 import AppRoutes from './AppRoutes';
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { setProductsAC } from './store/products/actionCreator';
+import { setCardsAC } from './store/cards/actionCreator';
 import { setCounterAC } from './store/likes/actionCreators'
 import { setPostsAC } from './store/posts/actionCreators';
 import { setUsersAC } from './store/users/actionCreators';
@@ -31,7 +31,7 @@ const App = () => {
   useEffect(() => {
 
     dispatch(setPostsAC())
-    dispatch(setProductsAC())
+    dispatch(setCardsAC())
     dispatch(setUsersAC())
     dispatch(setCounterAC())
     dispatch(setBackgroundAC())

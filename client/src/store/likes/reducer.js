@@ -14,16 +14,17 @@ const likesReducer = (state = initialValue, action) => {
       return { counter: action.payload, isLoading: false }
     }
     case incrementLikes: {
-      let productsArr = action.payload.counter
-   console.log(productsArr)
-      let products = productsArr[action.payload.userIndex].posts
-      let userId = productsArr[action.payload.userIndex].userId
-      console.log(userId)
-      let likes = products[action.payload.index].likes
-console.log(likes)
+      let counterArr = action.payload.counter
 
-      products[action.payload.index].likes = likes + 1
-console.log(products[action.payload.index].likes)
+      let counter = counterArr[action.payload.userIndex].posts
+      let userId = counterArr[action.payload.userIndex].userId
+   
+      let likes = counter[action.payload.index].likes
+
+
+      counter[action.payload.index].likes = likes + 1
+      counter[action.payload.index].fill = '#000'
+
 
       let index = action.payload.index
 
@@ -32,29 +33,20 @@ console.log(products[action.payload.index].likes)
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ post: products[action.payload.index], userIndex: action.payload.userIndex,userId:userId })
+        body: JSON.stringify({ post: counter[action.payload.index], userIndex: action.payload.userIndex,userId:userId })
       })
 
-console.log(productsArr)
-     
-
-      return { counter: productsArr, isLoading: false }
+      return { counter: counterArr, isLoading: false }
     }
 
-
-
     case decrementLikes: {
-      let productsArr = action.payload.counter
-      let products = productsArr[action.payload.userIndex].posts
-      let likes = products[action.payload.index].likes
+      let counterArr = action.payload.counter
+      let counter = counterArr[action.payload.userIndex].posts
+      let likes = counter[action.payload.index].likes
 
+      counter[action.payload.index].likes = likes - 1
 
-      products[action.payload.index].likes = likes - 1
-
-
-    
-
-      return { counter: productsArr, isLoading: false }
+      return { counter: counterArr, isLoading: false }
     }
     default: {
       return state

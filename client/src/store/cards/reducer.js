@@ -1,4 +1,4 @@
-import { setProducts } from "./actions";
+import { setCards } from "./actions";
 
 const initialValue = {
     value: JSON.parse(localStorage.getItem('products')),
@@ -6,11 +6,11 @@ const initialValue = {
 }
 
 
-const productsReducer = (state = initialValue, action) => {
+const cardsReducer = (state = initialValue, action) => {
 
     switch (action.type) {
 
-        case setProducts: {
+        case setCards: {
             return { value: JSON.parse(localStorage.getItem('products')), isLoading: false }
         }
         default: {
@@ -21,4 +21,4 @@ const productsReducer = (state = initialValue, action) => {
 
 }
 
-export default productsReducer
+export default cardsReducer
