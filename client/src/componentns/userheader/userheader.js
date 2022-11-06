@@ -41,7 +41,7 @@ const UserHeader = (props) => {
                         await dispatch(addAuthSubscriberAC({ id: id, index: index, authIndex: authIndex }))
 
                     }}>Subscribe</button>}
-                {isSubscribed &&
+                {isSubscribed && !user.isAuth &&
                     < button onClick={async () => { await dispatch(removeSubscriberAC({ id: id, index: index, authIndex: authIndex })) }}>Unsubscribe</button>
                 }
                 {user.isAuth &&

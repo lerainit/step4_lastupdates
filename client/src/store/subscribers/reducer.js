@@ -1,4 +1,4 @@
-import { addSubscriber, setSubscribers, addAuthSubscriber, removeSubscriber } from "./actions";
+import { setSubscribers, addAuthSubscriber, removeSubscriber } from "./actions";
 
 const initialValue = {
   value: [],
@@ -57,6 +57,10 @@ const subscriberReducer = (state = initialValue, action) => {
       return { value: users, isLoading: false, isSubscribed: false }
 
     }
+
+
+
+    
     default: {
       return state
     }
@@ -67,31 +71,3 @@ const subscriberReducer = (state = initialValue, action) => {
 }
 export default subscriberReducer
 
-/*case addSubscriber: {
-                let users = action.payload.users
-                let index;
-let id = action.payload.id
-console.log(id)
-             if(action.payload.index === 0){
-index = 1
-             }else{
-                 index = 0
-             }
-             let subscribers = users[action.payload.index].subscribers
- 
-
-             subscribers.push(users[index])
-             users[action.payload.index].subscribers = subscribers
- 
-        
-         
-
-             fetch('http://localhost:3001/users/subscribers', {
-  method: 'PUT',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({subscriber:users[index] , userId:id})
-})
-
-   return {value:users,isLoading:false}}*/
