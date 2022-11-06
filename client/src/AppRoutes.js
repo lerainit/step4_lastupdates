@@ -18,7 +18,7 @@ const AppRoutes = () => {
           
             <Route path='/' element={<Outlet />} >
              <Route index element = {<PostsPage/>}/>
-           <Route  path={"/:nickName"} element={<UserPage  />} />
+           <Route  path={"/:nickName"} element={<UserPage nickName ={nickName} />} />
           </Route>
 
             <Route path='*' element={<NotFoundPage />} />

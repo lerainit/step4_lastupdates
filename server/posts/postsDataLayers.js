@@ -59,7 +59,7 @@ export const deletePostData = async (userId, index) => {
     let posts = await Posts.findOne({ userId: userId })
     let newPosts = posts.posts[index]
     newPosts.splice(index, 1)
-    // newPosts.comments.splice(1,2)
+    // newPosts.comments.splice(1,1)
     await posts.save()
 }
 

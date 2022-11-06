@@ -11,6 +11,7 @@ import { setCards } from "../../store/cards/actions";
 import { postsSlice} from "../../store/posts/actions";
 import { NavLink } from "react-router-dom";
 import { setPostsAC } from "../../store/posts/actionCreators";
+import { setUserIndexAC } from "../../store/userIndex/actionCreators";
 
 
 const PostsPage = () => {
@@ -59,7 +60,7 @@ count =0
       <div className={styles.post_page_container} >
         <div className={styles.post_img_container}>
 
-          {posts.map(({ userId, postsIndex, url }, index) => users[findIndex(userId)].isAuth ? null : <div key={index} className={styles.posts_container} ><NavLink  className={styles.user_link} to={`/${users[findIndex(userId)].name.replace(/\s+/g, '')}`} ><div className={styles.user_container}>< img className={styles.user_img} src={users[findIndex(userId)].url} alt="user" /><h3 className={styles.user_name}>{users[findIndex(userId)].name}</h3></div></NavLink><img className={styles.posts_img} src={url} alt="post" onDoubleClick={async () => {
+          {posts.map(({ userId, postsIndex, url }, index) => users[findIndex(userId)].isAuth ? null : <div key={index} className={styles.posts_container} ><NavLink  className={styles.user_link} to={`/${users[findIndex(userId)].nickName}`} onClick = {()=>{dispatch(setUserIndexAC(findIndex(userId)))}} ><div className={styles.user_container}>< img className={styles.user_img} src={users[findIndex(userId)].url} alt="user" /><h3 className={styles.user_name}>{users[findIndex(userId)].name}</h3></div></NavLink><img className={styles.posts_img} src={url} alt="post" onDoubleClick={async () => {
             await dispatch(setCounterAC())
             dispatch(incrementLikesAC({ index: postsIndex, userIndex:findIndex(userId), counter: counterArr }))
 
