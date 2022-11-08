@@ -47,7 +47,7 @@ const Navigation = () => {
       {users.map(({ url, name, id, isAuth, isFollower,nickName }, index) => isFollower ? <div key={index}  className={styles.follower_container} ><NavLink className={styles.cart_link} to={`/${nickName}`} onClick = {()=>{dispatch(setUserIndexAC(index))}} ><img className={styles.cart} src={url} alt="img" /><h2 className={styles.user_name}>{name}</h2></NavLink><button onClick={
         async () => {
           await dispatch(removeSubscriberAC({ id: id, index: index, authIndex: authIndex }))
-          await dispatch(setFollowersAC())
+          await dispatch(setUsersAC())
           await dispatch(unFollowAC({ userIndex: index, id: id }))
           await dispatch(setUsersAC())
         }

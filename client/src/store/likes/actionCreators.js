@@ -12,7 +12,6 @@ export const setCounterAC = () => async (dispatch) => {
 
         if (status === 'success') {
 
-            console.log(data)
 
             dispatch({ type: setCounter, payload: data })
 

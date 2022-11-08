@@ -14,7 +14,6 @@ const subscriberReducer = (state = initialValue, action) => {
       return { value: action.payload, isLoading: false, isSubscribed: false }
     }
 
-
     case addAuthSubscriber: {
       let users = state.value
       let id = action.payload.id
@@ -58,9 +57,6 @@ const subscriberReducer = (state = initialValue, action) => {
 
     }
 
-
-
-    
     default: {
       return state
     }

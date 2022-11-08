@@ -1,10 +1,10 @@
 import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from './postsPage.module.scss'
-import Navigation from '../navigation/Navigation'
+import Navigation from '../../componentns/navigation/Navigation'
 import { incrementLikesAC } from "../../store/likes/actionCreators";
 import { setCounterAC } from "../../store/likes/actionCreators";
-import CommentsForm from "../commentsForm/commentsForm";
+import CommentsForm from "../../componentns/commentsForm/commentsForm";
 import { showCommentsAC } from "../../store/comments/actionCreators";
 import { setCommentsAC } from "../../store/comments/actionCreators";
 import { setCards } from "../../store/cards/actions";

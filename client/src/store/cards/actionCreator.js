@@ -9,7 +9,7 @@ export const setCardsAC = () => async (dispatch) => {
                 .then(response => response.json());
 
             if (status === 'success') {
-                console.log(data)
+             
                 localStorage.setItem(`products`, JSON.stringify(data))
 
                 dispatch({ type: setCards, })

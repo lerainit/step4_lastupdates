@@ -11,7 +11,6 @@ export const setUsersAC = () => async (dispatch) => {
         if (status === 'success') {
 
 
-
             dispatch({ type: setUsers, payload: data })
 
         }

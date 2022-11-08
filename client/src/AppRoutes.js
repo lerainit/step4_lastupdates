@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route, useParams,Outlet } from 'react-router-dom'
 import UserPage from './pages/userpage/userPage';
 import NotFoundPage from './pages/notfoundpage/notfoundpage';
-import PostsPage from './componentns/posts/postsPage';
+import PostsPage from './pages/posts/postsPage';
 
 
 

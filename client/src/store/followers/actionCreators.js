@@ -9,9 +9,6 @@ export const setFollowersAC = () => async (dispatch) => {
 
         if (status === 'success') {
 
-            console.log(data)
-
-
 
             dispatch({ type: setFollowers, payload: data })
         }

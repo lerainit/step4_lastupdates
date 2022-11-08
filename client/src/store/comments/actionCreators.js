@@ -11,9 +11,8 @@ export const setCommentsAC = () => async (dispatch) => {
 
 
         if (status === 'success') {
-            console.log(data)
+ 
             localStorage.setItem(`products`, JSON.stringify(data))
-
 
             dispatch({ type: setComments, payload: data })
 

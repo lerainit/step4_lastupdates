@@ -42,7 +42,7 @@ const UserHeader = (props) => {
 
                     }}>Subscribe</button>}
                 {isSubscribed && !user.isAuth &&
-                    < button onClick={async () => { await dispatch(removeSubscriberAC({ id: id, index: index, authIndex: authIndex })) }}>Unsubscribe</button>
+                    < button className={styles.subscribe_btn}  onClick={async () => { await dispatch(removeSubscriberAC({ id: id, index: index, authIndex: authIndex })) }}>Unsubscribe</button>
                 }
                 {user.isAuth &&
                     < button className={styles.subscribe_btn}>Edit profile</button>
