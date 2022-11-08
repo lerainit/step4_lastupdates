@@ -38,6 +38,8 @@ const App = () => {
     dispatch(setSubscribersAC())
     dispatch(setCommentsAC())
     dispatch(setFollowersAC())
+    console.log(process.env. REACT_APP_API_URL_USERS)
+    
   }, [])
 
   if (isLoadingPosts || isLoadingUsers || isLoadingProducts || isLoadingCounter || isLoadingBackground || isLoadingSubscribers || isLoadingComments || isLoadingFollowers) {

@@ -19,7 +19,7 @@ export const addLikes = async (req, res) => {
 export const addComments = async (req, res) => {
 
     const data = await addCommentsData(req.body.comment, req.body.userId, req.params.index)
-    console.log(req.params.index)
+
     res.json({ status: 'success', data })
 
 }

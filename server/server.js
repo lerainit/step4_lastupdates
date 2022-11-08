@@ -2,7 +2,7 @@ import app from "./App.js";
 import chalk from "chalk"
 import mongoose from "mongoose";
 
-const PORT = 3001;
+const PORT =  process.env.PORT || 3001;
 
 const DB_URL = 'mongodb+srv://admin:lera1989@cluster0.uox40k6.mongodb.net/App-instagram?retryWrites=true&w=majority'
 

@@ -4,7 +4,7 @@ export const setFollowersAC = () => async (dispatch) => {
 
 
     try {
-        const { status, data } = await fetch('http://localhost:3001/users').then(response => response.json());
+        const { status, data } = await fetch(process.env. REACT_APP_API_URL_USERS).then(response => response.json());
 
 
         if (status === 'success') {

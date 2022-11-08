@@ -3,7 +3,7 @@ export const setBackgroundAC =()=> async (dispatch)=> {
 
   if  (!localStorage.getItem('products')){
         try {
-            const {status,data} = await fetch('http://localhost:3001/posts').then(response =>response.json());
+            const {status,data} = await fetch(process.env.REACT_APP_API_URL_POSTS).then(response =>response.json());
        
     
   if(status === 'success'){

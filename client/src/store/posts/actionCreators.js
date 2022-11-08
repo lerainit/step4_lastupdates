@@ -3,7 +3,7 @@ import { setPosts } from "./actions";
  export const setPostsAC =()=> async (dispatch)=>{
    
         try {
-            const {status,data} = await fetch('http://localhost:3001/posts?limit=1').then(response =>response.json());
+            const {status,data} = await fetch( process.env.REACT_APP_API_URL_POSTS).then(response =>response.json());
          
 
             if(status === 'success'){

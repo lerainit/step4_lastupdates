@@ -16,12 +16,10 @@ const CommentsForm = (props) => {
   const users = useSelector(store => store.users.value)
   const authIndex = users.findIndex(({ isAuth }) => isAuth === true)
 
-
   let initialValues = {
     comment: '',
 
   }
-
   const validationSchema = yup.object().shape({
     comment: yup.string()
       .min(3, 'Min 3 symbols')
@@ -29,7 +27,6 @@ const CommentsForm = (props) => {
       .required('Text is required'),
 
   })
-
   return (
 
     <Formik
@@ -37,9 +34,7 @@ const CommentsForm = (props) => {
 
       validationSchema={validationSchema}
       onSubmit={async (values, FormikProps) => {
-        console.log(values)
-
-
+    
         fetch(`http://localhost:3001/posts/comments/${props.index}`, {
           method: 'PUT',
           headers: {

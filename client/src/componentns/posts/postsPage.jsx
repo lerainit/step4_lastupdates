@@ -38,11 +38,8 @@ count =0
   count++
       }
    count++
-      console.log(count)
     dispatch(setPostsAC())
     dispatch({ type: postsSlice, payload: { posts: posts, count: count } })
- 
-      console.log('scroll')
     }
   }
 

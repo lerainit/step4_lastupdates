@@ -35,7 +35,7 @@ const Navigation = () => {
 
             await dispatch(setSubscribersAC())
             await dispatch(addAuthSubscriberAC({ id: id, index: index, authIndex: authIndex }))
-            await dispatch(setFollowersAC())
+            await dispatch(setUsersAC())
             await dispatch(becomeFollowerAC({ userIndex: index, id: id }))
             await dispatch(setUsersAC())
           }
