@@ -35,7 +35,7 @@ const Modal = () => {
         </div>
         <img className={styles.modal_img} src={products[index].url} alt="post" />
         <div className={styles.comments}>
-          {userPosts[index].comments.map(({ userIndex, text }) => <div className={styles.comment_container}><div className={styles.user_container}><img className={styles.comment_user_img} src={users[userIndex].url} alt="user" /> <h3 className={styles.user_name}>{users[userIndex].name}</h3></div><h3 className={styles.comment}>{text}</h3></div>)}
+          {userPosts[index].comments.map(({ userIndex, text },index) => <div className={styles.comment_container} key = {index}><div className={styles.user_container}><img className={styles.comment_user_img} src={users[userIndex].url} alt="user" /> <h3 className={styles.user_name}>{users[userIndex].name}</h3></div><h3 className={styles.comment}>{text}</h3></div>)}
           <h3 className={styles.user_name}><span className={styles.modal_span}>Likes</span>{counter}</h3>
 
           <svg onClick={async () => {

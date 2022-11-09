@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from './userHeader.module.scss'
 import { NavLink } from "react-router-dom";
 import { setSubscribersAC, addAuthSubscriberAC, removeSubscriberAC } from "../../store/subscribers/actionCreators";
-
-
+import { becomeFollowerAC, unFollowAC } from "../../store/followers/actionCreators";
+import { setUsersAC } from "../../store/users/actionCreators";
+import { setUsers } from "../../store/users/actions";
 
 const UserHeader = (props) => {
     const dispatch = useDispatch()
@@ -12,11 +13,12 @@ const UserHeader = (props) => {
     const users = useSelector(store => store.subscribers.value)
     const posts = useSelector(store => store.products.value)
     let id = props.id
-
+    const subscribers = useSelector(store => store.users.value)
     const authIndex = users.findIndex(({ isAuth }) => isAuth === true)
     const index = users.findIndex(el => el.id === props.id)
-    const isSubscribed = useSelector(store => store.subscribers.isSubscribed)
+
     const user = users[index]
+
 
     return (
 
@@ -35,14 +37,21 @@ const UserHeader = (props) => {
 
                     <h3>{user.info}</h3>
                 </div>
-                {!user.isAuth && !isSubscribed &&
+                {!subscribers[index].isFollower && !user.isAuth  &&
                     <button className={styles.subscribe_btn} onClick={async () => {
                         await dispatch(setSubscribersAC())
                         await dispatch(addAuthSubscriberAC({ id: id, index: index, authIndex: authIndex }))
-
+                        dispatch({ type: setUsers, payload: users })
+                        await dispatch(becomeFollowerAC({ userIndex: index, id: id }))
+                        await dispatch(setUsersAC())
                     }}>Subscribe</button>}
-                {isSubscribed && !user.isAuth &&
-                    < button className={styles.subscribe_btn}  onClick={async () => { await dispatch(removeSubscriberAC({ id: id, index: index, authIndex: authIndex })) }}>Unsubscribe</button>
+                {subscribers[index].isFollower && !user.isAuth  &&
+                    < button className={styles.subscribe_btn} onClick={async () => {
+                        await dispatch(removeSubscriberAC({ id: id, index: index, authIndex: authIndex }))
+                        dispatch({ type: setUsers, payload: users })
+                        await dispatch(unFollowAC({ userIndex: index, id: id }))
+                        await dispatch(setUsersAC())
+                    }}>Unsubscribe</button>
                 }
                 {user.isAuth &&
                     < button className={styles.subscribe_btn}>Edit profile</button>
