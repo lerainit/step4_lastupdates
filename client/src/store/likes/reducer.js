@@ -28,7 +28,7 @@ const likesReducer = (state = initialValue, action) => {
 
       let index = action.payload.index
 
-      fetch(`http://localhost:3001/posts/likes/${index}`, {
+      fetch(`${process.env.REACT_APP_API_URL_POSTS}/likes/${index}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

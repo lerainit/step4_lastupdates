@@ -25,7 +25,7 @@ const subscriberReducer = (state = initialValue, action) => {
       subscribers.push(authUser)
       users[action.payload.index].subscribers = subscribers
 
-      fetch('http://localhost:3001/users/subscribers', {
+      fetch(`${process.env.REACT_APP_API_URL_USERS}/subscribers`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ const subscriberReducer = (state = initialValue, action) => {
       subscribers.splice(action.payload.authIndex, 1)
       users[action.payload.index].subscribers = subscribers
 
-      fetch('http://localhost:3001/users', {
+      fetch(`${process.env.REACT_APP_API_URL_USERS}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

@@ -35,7 +35,7 @@ const CommentsForm = (props) => {
       validationSchema={validationSchema}
       onSubmit={async (values, FormikProps) => {
     
-        fetch(`http://localhost:3001/posts/comments/${props.index}`, {
+        fetch(`${process.env.REACT_APP_API_URL_POSTS}/comments/${props.index}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'

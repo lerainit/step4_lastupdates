@@ -19,7 +19,7 @@ const FollowerReducer = (state = initialValue, action) => {
 
       usersArr[action.payload.userIndex].isFollower = true
 
-      fetch('http://localhost:3001/users/follower', {
+      fetch(`${process.env.REACT_APP_API_URL_USERS}/follower`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ const FollowerReducer = (state = initialValue, action) => {
 
       usersArr[action.payload.userIndex].isFollower = false
 
-      fetch('http://localhost:3001/users/follower/unfollow', {
+      fetch(`${process.env.REACT_APP_API_URL_USERS}/follower/unfollow`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
