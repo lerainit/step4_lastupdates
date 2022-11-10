@@ -2,7 +2,7 @@ import { incrementLikes, decrementLikes, setCounter } from "./actions";
 
 export const incrementLikesAC = (payload) => ({ type: incrementLikes, payload })
 
-export const decrementLikesAC = () => ({ type: decrementLikes })
+export const decrementLikesAC = (payload) => ({ type: decrementLikes,payload })
 export const setCounterAC = () => async (dispatch) => {
 
 

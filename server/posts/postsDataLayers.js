@@ -4,7 +4,7 @@ import mongoose from "mongoose"
 
 const postsSchema = new mongoose.Schema({
     userId: Number,
-    posts: [{ id: Number, url: String, hasBackground: Boolean, comments: [{ userIndex: Number, text: String, isVisible: Boolean }], likes: Number },]
+    posts: [{ id: Number, url: String, hasBackground: Boolean, comments: [{ userIndex: Number, text: String, isVisible: Boolean }], likes: Array },]
 })
 
 const Posts = mongoose.model('posts', postsSchema)
@@ -31,11 +31,22 @@ export const addNewPostData = async (post, userId) => {
 
 }
 
-export const addLikesData = async (userId, index) => {
+export const addLikesData = async (userId, index,user) => {
 
     let posts = await Posts.findOne({ userId: userId })
     let newPosts = posts.posts[index].likes
-    newPosts++
+    newPosts.push(user)
+    posts.posts[index].likes = newPosts
+
+    posts.save()
+    return posts
+}
+export const removeLikesData = async (userId, index,user) => {
+
+    let posts = await Posts.findOne({ userId: userId })
+    let newPosts = posts.posts[index].likes
+   let userIndex = newPosts.findIndex(el => el.name === user.name)
+   newPosts.splice(userIndex,1)
     posts.posts[index].likes = newPosts
 
     posts.save()

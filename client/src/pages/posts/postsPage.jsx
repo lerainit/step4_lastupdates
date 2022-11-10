@@ -12,7 +12,7 @@ import { postsSlice} from "../../store/posts/actions";
 import { NavLink } from "react-router-dom";
 import { setPostsAC } from "../../store/posts/actionCreators";
 import { setUserIndexAC } from "../../store/userIndex/actionCreators";
-
+import { decrementLikesAC } from "../../store/likes/actionCreators";
 
 const PostsPage = () => {
 
@@ -22,8 +22,11 @@ const PostsPage = () => {
   const comments = useSelector(store => store.comments.value)
   const postssArr = useSelector(store => store.products.value)
   const posts = useSelector(store => store.posts.value)
+  const authIndex = users.findIndex(({ isAuth }) => isAuth === true)
+  const authUser = users[authIndex]
 function findIndex (userId ){ 
   return users.findIndex(el => el.id === userId)}
+
  
   let count = 0
 
@@ -59,8 +62,7 @@ count =0
 
           {posts.map(({ userId, postsIndex, url }, index) => users[findIndex(userId)].isAuth ? null : <div key={index} className={styles.posts_container} ><NavLink  className={styles.user_link} to={`/${users[findIndex(userId)].nickName}`} onClick = {()=>{dispatch(setUserIndexAC(findIndex(userId)))}} ><div className={styles.user_container}>< img className={styles.user_img} src={users[findIndex(userId)].url} alt="user" /><h3 className={styles.user_name}>{users[findIndex(userId)].name}</h3></div></NavLink><img className={styles.posts_img} src={url} alt="post" onDoubleClick={async () => {
             await dispatch(setCounterAC())
-            dispatch(incrementLikesAC({ index: postsIndex, userIndex:findIndex(userId), counter: counterArr }))
-
+            counterArr[findIndex(userId)].posts[postsIndex].likes.includes(authUser.name)?  dispatch(decrementLikesAC({ index: postsIndex, userIndex: findIndex(userId), counter: counterArr,users:users ,authIndex:authIndex})) : dispatch(incrementLikesAC({ index: postsIndex, userIndex: findIndex(userId), counter: counterArr,users:users,authIndex:authIndex }))        
           }} />
             {postssArr[findIndex(userId)].posts[postsIndex].comments.map((el, index) => el.isVisible ? <div  key={index} className={styles.comments_container}><h3 className={styles.comment_user_name}>{users[el.userIndex].name}</h3><h3 className={styles.comment_user_text}>{el.text}</h3></div> : null)}
             {postssArr[findIndex(userId)].posts[postsIndex].comments.length > 1 && !postssArr[findIndex(userId)].posts[postsIndex].comments[1].isVisible ? <button className={styles.showmore_btn} onClick={() => {
@@ -69,13 +71,14 @@ count =0
 
               dispatch({ type: setCards })
             }}>Show more</button> : null}
-            <span className={styles.posts_span}>Likes:{counterArr[findIndex(userId)].posts[postsIndex].likes}</span> 
+            <span className={styles.posts_span}>Likes:{counterArr[findIndex(userId)].posts[postsIndex].likes.length}</span> 
 
 <svg onClick={async () => {
               await dispatch(setCounterAC())
-              dispatch(incrementLikesAC({ index: postsIndex, userIndex: findIndex(userId), counter: counterArr }))
+             counterArr[findIndex(userId)].posts[postsIndex].likes.includes(authUser.name)?  dispatch(decrementLikesAC({ index: postsIndex, userIndex: findIndex(userId), counter: counterArr,users:users ,authIndex:authIndex})) : dispatch(incrementLikesAC({ index: postsIndex, userIndex: findIndex(userId), counter: counterArr,users:users,authIndex:authIndex }))        }
+            
 
-            }} className={styles.svg} version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
+            } className={styles.svg} version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
 	 viewBox="0 0 32 32">
 <g>
 	<g id="heart_x5F_fill" 

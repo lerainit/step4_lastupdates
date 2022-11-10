@@ -1,4 +1,4 @@
-import { getPostsData, addNewPostData, addLikesData, deletePostData, addCommentsData } from "./postsDataLayers.js";
+import { getPostsData, addNewPostData, addLikesData, deletePostData, addCommentsData,removeLikesData } from "./postsDataLayers.js";
 
 
 
@@ -13,7 +13,12 @@ export const addNewPost = async (req, res) => {
 }
 export const addLikes = async (req, res) => {
 
-    const data = await addLikesData(req.body.userId, req.params.index)
+    const data = await addLikesData(req.body.userId, req.params.index,req.body.user)
+    res.json({ status: 'success', data })
+}
+export const removeLikes = async (req, res) => {
+
+    const data = await removeLikesData(req.body.userId, req.params.index,req.body.user)
     res.json({ status: 'success', data })
 }
 export const addComments = async (req, res) => {
