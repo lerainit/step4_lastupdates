@@ -11,7 +11,7 @@ const subscriberReducer = (state = initialValue, action) => {
   switch (action.type) {
     case setSubscribers: {
 
-      return { value: action.payload, isLoading: false, isSubscribed: false }
+      return {...state, value: action.payload, isLoading: false, isSubscribed: false }
     }
 
     case addAuthSubscriber: {
@@ -32,7 +32,7 @@ const subscriberReducer = (state = initialValue, action) => {
         },
         body: JSON.stringify({ subscriber: authUser, userId: id })
       })
-      return { value: users, isLoading: false, isSubscribed: true }
+      return {...state, value: users, isLoading: false, isSubscribed: true }
 
     }
     case removeSubscriber: {
@@ -53,7 +53,7 @@ const subscriberReducer = (state = initialValue, action) => {
         },
         body: JSON.stringify({ index: action.payload.authIndex, userId: id })
       })
-      return { value: users, isLoading: false, isSubscribed: false }
+      return {...state, value: users, isLoading: false, isSubscribed: false }
 
     }
 

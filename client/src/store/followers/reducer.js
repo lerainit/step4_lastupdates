@@ -11,7 +11,7 @@ const FollowerReducer = (state = initialValue, action) => {
   switch (action.type) {
 
     case setFollowers: {
-      return ({ value: action.payload, isLoading: false })
+      return ({...state, value: action.payload, isLoading: false })
 
     }
     case becomeFollower: {
@@ -27,7 +27,7 @@ const FollowerReducer = (state = initialValue, action) => {
         body: JSON.stringify({ userId: action.payload.id })
       })
 
-      return { value: usersArr, isLoading: false }
+      return {...state, value: usersArr, isLoading: false }
     }
     case unFollow: {
       let usersArr = state.value
@@ -41,7 +41,7 @@ const FollowerReducer = (state = initialValue, action) => {
         },
         body: JSON.stringify({ userId: action.payload.id })
       })
-      return { value: usersArr, isLoading: false }
+      return {...state, value: usersArr, isLoading: false }
     }
     default: {
       return state
