@@ -9,7 +9,6 @@ import PostsPage from './pages/posts/postsPage';
 const AppRoutes = () => {
 
    
-
     let {nickName } =  useParams()
 
     return (

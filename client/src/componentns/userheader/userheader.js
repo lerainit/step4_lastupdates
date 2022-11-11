@@ -23,7 +23,6 @@ const UserHeader = (props) => {
     return (
 
         <>
-
             <header className={styles.user_header}>
                 <NavLink className={styles.logo_insta} to='/' ><h2 className={styles.logo_insta}>Instagram</h2 ></NavLink>
                 <img className={styles.user_img} src={user.url} alt='Avatar' />
